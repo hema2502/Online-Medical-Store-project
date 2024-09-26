@@ -1,0 +1,67 @@
+<br>
+<div class="add-grossary-tab">
+  <div class="centered">
+    <h1>Add Item</h1>
+  </div>
+  <br />
+  <div class="centered">
+    <table>
+      <tr>
+        <td>Product Name</td>
+        <td>
+          <input class="form-control" type="text" [(ngModel)]="productname" required />
+        </td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td>
+          <select class="form-select" [(ngModel)]="category">
+            <option *ngFor="let item of getCategoryList" [value]="item?.value">{{ item?.name }}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Image</td>
+        <td>
+          <input class="form-control" type="text" [(ngModel)]="image" />
+        </td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>
+          <input class="form-control" type="text" [(ngModel)]="description" />
+        </td>
+      </tr>
+      <tr>
+        <td>Mesurment</td>
+        <td>
+          <select class="form-select" [(ngModel)]="mesurement">
+            <option value="Litres">Litres</option>
+            <option value="Grams">Grams</option>
+            <option value="Millilitres">Millilitres</option>
+            <option value="Tablets">Tablets</option>
+            <option value="Pieces">Pieces</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Mrp Price</td>
+        <td>
+          <input class="form-control" type="number" [(ngModel)]="mrpPrice" />
+          <div *ngIf="mrpPrice < 0" class="error">MRP Price cannot be negative</div>
+        </td>
+      </tr>
+      <tr>
+        <td>Quantity</td>
+        <td>
+          <input class="form-control" type="number" [(ngModel)]="quantity" />
+          <div *ngIf="quantity < 0" class="error">Quantity cannot be negative</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <div class="centered">
+    <button (click)="onAddProduct()" class="btn btn-primary mb-3">{{ isEdit ? 'Update' : 'Add Product' }}</button>
+  </div>
+</div>
